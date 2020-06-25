@@ -1,11 +1,3 @@
-// export const primary = {
-//     100: "#BBBFBF",
-//     200: "#084854",
-//     300: "#7C7F80",
-//     400: "#3CA1B5",
-//     500: "#57CEE6",
-// }
-
 export const primary = {
     100: "#AFDADE",
     200: "#3CA1B5",

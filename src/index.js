@@ -1,27 +1,45 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 
 import { PrimaryButton, SecondaryButton, OutlineButton } from './components/Buttons';
-import { GlobalStyle } from './utils';
-
-const Wrapper = styled.section`
-    /* display: grid; */
-    width: 600px;
-    /* grid-template-columns: repeat(3, 1fr); */
-    /* gap: 16px; */
-`;
+import { GlobalStyle, defaultTheme, darkTheme } from './utils';
 
 const App = () => {
+    const [useDarkTheme, setUseDarkTheme] = useState();
+
+    const styles = {
+        backgroundColor: useDarkTheme ? defaultTheme.primaryColor : defaultTheme.disabled,
+        width: '100vw',
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-around'
+    }
+
     return (
-        <main>
+        <ThemeProvider theme={useDarkTheme ? darkTheme : defaultTheme }>
+            
+                <button 
+                    style={{ margin: "0 16px 24px", padding: "8px", background: 'none'}} 
+                    onClick={() => setUseDarkTheme(true)}
+                >
+                    Dark Theme
+                </button>
+                <button 
+                    style={{ margin: "0 16px 24px", padding: "8px", background: 'none'}} 
+                    onClick={() => setUseDarkTheme(false)}
+                >
+                    Default Theme
+                </button>
+                <div style={styles}>
+                    <PrimaryButton modifiers={[]}>Hello World</PrimaryButton>
+                    <SecondaryButton modifiers={[]}>Hello World</SecondaryButton>
+                    <OutlineButton modifiers={[]}>Hello World</OutlineButton>
+                </div>
+            
             <GlobalStyle />
-            <Wrapper>
-                <PrimaryButton modifiers={['small', 'error']}>Hello World</PrimaryButton>
-                <SecondaryButton modifiers={['large', 'error']}>Hello World</SecondaryButton>
-                <OutlineButton modifiers={['errorOutline']}>Hello World</OutlineButton>
-            </Wrapper>
-        </main>
+        </ThemeProvider>
     );
 }
 
