@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useSpring , animated, config } from 'react-spring';
 
 import { typeScale } from '../utils';
 import { Illustrations, CloseIcon } from '../assets';
@@ -47,18 +48,29 @@ const HeroImage = styled.img`
 `;
 
 
-export const SignUpModal = () => {
+export const SignUpModal = ({ showModal, toggleModal }) => {
+    const animation = useSpring({
+        opacity: showModal ? 1 : 0,
+        transform: showModal ? 'translateY(0)' : 'translateY(-200%)',
+        config: config.default
+    });
+
     return (
-        <ModalWrapper>
-            <HeroImage src={Illustrations.Signup} aria-hidden="true" />
-            <SignupHeader>Sign Up</SignupHeader>
-            <SignupText>
-                Sign up today to get access!
-            </SignupText>
-            <PrimaryButton>Sign Up!</PrimaryButton>
-            <CloseButton aria-label="Close modal">
-                <CloseIcon />
-            </CloseButton>
-        </ModalWrapper>
+        <animated.div style={animation}>
+            <ModalWrapper>
+                <HeroImage src={Illustrations.Signup} aria-hidden="true" />
+                <SignupHeader>Sign Up</SignupHeader>
+                <SignupText>
+                    Sign up today to get access!
+                </SignupText>
+                <PrimaryButton>Sign Up!</PrimaryButton>
+                <CloseButton 
+                    onClick={() => toggleModal(false)}
+                    aria-label="Close modal"
+                >
+                    <CloseIcon />
+                </CloseButton>
+            </ModalWrapper>
+        </animated.div>
     )
 }
