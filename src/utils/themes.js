@@ -11,6 +11,8 @@ export const defaultTheme = {
     disabled: neutral[300],
     textOnDisabled: neutral[400],
     white: text.inverted,
+    formInputBackground: neutral[100],
+    formInputText: neutral[600],
     primaryFont,
     status: {
         warningColor: yellow[100],
@@ -35,6 +37,8 @@ export const darkTheme = {
     disabled: neutral[300],
     textOnDisabled: neutral[400],
     white: text.inverted,
+    formInputBackground: primary[500],
+    formInputText: neutral[200],
     primaryFont,
     status: {
         warningColor: yellow[100],

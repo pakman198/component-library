@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { ThemeProvider } from 'styled-components';
 
-import { PrimaryButton, SecondaryButton, OutlineButton } from './components/Buttons';
+import { SignUpModal } from './components';
 import { GlobalStyle, defaultTheme, darkTheme } from './utils';
 
 const App = () => {
@@ -33,9 +33,7 @@ const App = () => {
                     Default Theme
                 </button>
                 <div style={styles}>
-                    <PrimaryButton modifiers={[]}>Hello World</PrimaryButton>
-                    <SecondaryButton modifiers={[]}>Hello World</SecondaryButton>
-                    <OutlineButton modifiers={[]}>Hello World</OutlineButton>
+                    <SignUpModal />
                 </div>
             
             <GlobalStyle />
