@@ -164,7 +164,10 @@ export const OutlineButton = styled(Button)`
 
     &:disabled {
         background-color: ${defaultTheme.white};
-        border-color: ${ ({ theme }) => rgba(theme.primaryColor, 0.6) };
+        border-color: ${ ({ theme }) => {
+            console.log({theme})
+            return rgba(theme.primaryColor, 0.6);
+        }};
         color: ${ ({ theme }) => rgba(theme.primaryColor, 0.6) };
     }
 
